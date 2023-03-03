@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card card-header">
+            <div class="row mb-md-2">
+                <div class="col-sm-12 col-md-6">
+                    <h5 class="card-title text-primary">Favicon Details</h5>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                        <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal(content)">Add Favicon</button>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                        <thead>
+                            <tr>
+                                <!-- <th>Sr No.</th>
+                <th>Property ID</th> -->
+                                <th>Image</th>
+                                <th>Updated on Date & Time</th>
+                                <th>Updated By</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let logo of faviconDetails">
+                                <!-- <td>{{logo.ID}}</td>
+                <td>{{logo.PropertyID}}</td> -->
+                                <td><img src="assets/img/favicon_admin/{{logo.PropertyID}}/{{logo.FeaturedImage}}" width="30%" height="25%"></td>
+                                <td>{{logo.updated_at}}</td>
+                                <td>{{logo.updatedby}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" (click)="deleteFaviconRow(logo)">Delete</button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <ng-template #content role="document" let-modal>
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0">Add Favicon here</h5>
+                        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form (ngSubmit)="saveMultipleImage()">
+                            <input type="text" name="PropertyID" class="form-control" id="PropertyID" [(ngModel)]="faviconData.PropertyID" hidden>
+                            <div class="row mb-4">
+                                <label for="inputName3" class="col-sm-2 col-form-label">Favicon</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" type='file' id="FeaturedImage" name="FeaturedImage" (change)="onSelectFile($event)">
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary float-right" id="publier-btn">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

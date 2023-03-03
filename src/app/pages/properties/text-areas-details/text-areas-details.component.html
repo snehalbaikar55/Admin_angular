@@ -1,0 +1,123 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row mb-md-2">
+                    <div class="col-sm-12 col-md-6">
+                        <h5 class="card-title text-primary">Text areas & description</h5>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                            <button type="button" class="btn  btn-success  waves-effect waves-light" (click)="editShowHide()">{{ReadMore?"Show Table":"Hide Table"}}</button>
+                            &nbsp;&nbsp;
+                            <button type="button" class="btn btn-primary  waves-effect waves-light" (click)="edit(textdada[0].PropertyID)">Edit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+               <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables" *ngIf="visible">
+                    <thead>
+                        <tr>
+                            <th>Details</th>
+                            <th>Entered info</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor = "let data of textdada">
+                        <tr>
+                            <td>Property Name</td>
+                            <td>{{data.PropertyName}}</td>
+                        </tr>
+                        <tr>
+                            <td>Whatsapp Number</td>
+                            <td>{{data.Wnumber}}</td>
+                        </tr>
+                        <tr>
+                            <td>Calling Number</td>
+                            <td>{{data.Cnumber}}</td>
+                        </tr>
+                        <tr>
+                            <td>Region</td>
+                            <td>{{data.Region}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sub Region<span class="text-danger">*</span></td>
+                            <td>{{data.SubRegion}}</td>
+                        </tr>
+                        <tr>
+                            <td>Construction Status</td>
+                            <td>
+                                <tr *ngFor="let consData of constStatusObj">
+                                    <td *ngIf="consData.checked">
+                                        <ul>
+                                            <li>{{ consData.name }}</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </td>
+                            <!-- <td>{{data.ConStatus}}</td> -->
+                        </tr>
+                        <tr>
+                            <td>Property Type</td>
+                            <td>{{data.PropertyType}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{data.Location}}</td>
+                        </tr>
+                        <tr>
+                            <td>Developer</td>
+                            <td>{{data.Developer}}</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>{{data.Price}}</td>
+                        </tr>
+                        <tr>
+                            <td>Text Area 1</td>
+                            <td>{{data.t1}}</td>
+                        </tr>
+                        <tr>
+                            <td>Text Area 2</td>
+                            <td>{{data.t2}}</td>
+                        </tr>
+                        <tr>
+                            <td>Text Area 3</td>
+                            <td>{{data.t3}}</td>
+                        </tr>
+                        <tr>
+                            <td>Text Area 4</td>
+                            <td>{{data.t4}}</td>
+                        </tr>
+                        <tr>
+                            <td>Text Area 5</td>
+                            <td>{{data.t5}}</td>
+                        </tr>
+                        <tr>
+                            <td>Text Area 6</td>
+                            <td>{{data.t6}}</td>
+                        </tr>
+                        <tr>
+                            <td>Text Area 7</td>
+                            <td>{{data.te7}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description 1</td>
+                            <td>{{data.d1}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description 2</td>
+                            <td>{{data.d2}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description 3</td>
+                            <td>{{data.d3}}</td>
+                        </tr>
+                        <tr>
+                            <td>Updated By</td>
+                            <td>{{data.updatedby}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div> 
+</div> 

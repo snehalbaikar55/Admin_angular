@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Developer Registration Form</h4>
+                <p class="card-title-desc">Add new developer here 
+                </p>
+            </div>
+            <div class="card-body p-4">
+
+                <div class="row">
+     
+                        <div class="mt-4 mt-lg-0">
+                            <form (ngSubmit)="addDvveloperdata()">
+                                <div class="row mb-4">
+                                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Builder/Developer Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="Developer" (keyup)="checkAvail($event)" [(ngModel)]="adddeveloper.Developer" id="Developer">
+                                        <span class="text-danger" [hidden]="!isDeveloper">{{isDeveloper}}</span>
+                                    </div>
+                                </div>
+ 
+                                <div class="row justify-content-end">
+                                    <div class="col-sm-9">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary w-md" [disabled]="isDeveloper">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+         
+                </div>
+
+  
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- End Form Layout -->

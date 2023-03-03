@@ -1,0 +1,93 @@
+<div class="row">
+    <div *ngIf="loader" class="mt-5 text-center">
+        <img role="status" aria-hidden="true" src="assets/images/admin/admin_loader.gif">
+     </div>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-header">
+                        <div class="row mb-md-2">
+                            <h4 class="card-title">Add Property Details</h4>
+                            <div class="col-sm-12 col-md-6">
+                                <div *ngIf="this.length==1;else other_content">
+                                    <div class="item" *ngFor="let item of items">
+                                        <div #myDiv class="itemName" *ngIf="item.name !== currentName"></div>
+                                    </div>
+                                </div>
+                                <ng-template #other_content>
+                                    <div class="item" *ngFor="let item of items">
+                                        <div #myDiv class="itemName" *ngIf="item.name == currentName"></div>
+                                    </div>
+                                </ng-template>
+
+                                <form #signupForm=ngForm (ngSubmit)="onSubmit1()">
+                                    <input type="text" name="PropertyName" class="form-control" id="PropertyName"
+                                        [(ngModel)]="property.PropertyName" hidden>
+                                    <input type="text" name="PropertyID" class="form-control" id="PropertyID"
+                                        [(ngModel)]="property.PropertyID" hidden>
+                                    <button type="submit" class="btn btn-primary btn-sm waves-effect waves-light"
+                                        id="sa-position" [disabled]="disabledButton">Register</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                                    <button type="button" *ngIf="(this.forminfodata) && (this.formdata[0].status == 1)"
+                                        class="btn btn-primary waves-effect waves-light"
+                                        (click)="activInactive(this.formdata)">Active</button>
+                                    <button type="button"
+                                        *ngIf="((!this.forminfodata)||(this.formdata[0].status == 0) || (this.formdata[0].status == null))"
+                                        class="btn btn-danger waves-effect waves-light"
+                                        (click)="activInactive(this.formdata)">Inactive</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card card-header">
+                        <div class="row mb-md-2">
+                            <div class="col-sm-12 col-md-6">
+                                <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                                    <app-change-color></app-change-color>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-primary waves-effect waves-light"
+                                        routerLink="/images/{{PropertyID}}">images</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-primary waves-effect waves-light"
+                                        routerLink="/leads/{{PropertyID}}">Leads</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-primary waves-effect waves-light"
+                                        routerLink="/logs/{{PropertyID}}">Logs</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <app-text-areas-details></app-text-areas-details>
+                <app-add-pricing></app-add-pricing>
+                <app-rera></app-rera>
+                <app-seokeywords></app-seokeywords>
+                <!-- <app-add-favicon></app-add-favicon>
+                <app-add-logo></app-add-logo>
+                <app-featuredimage></app-featuredimage>
+                <app-galleryimages></app-galleryimages>
+                <app-floorplans></app-floorplans>
+                <app-amenities></app-amenities> -->
+                <app-form-info></app-form-info>
+                <app-extracodes></app-extracodes>
+                <app-nearby-location></app-nearby-location>
+                <app-location-url></app-location-url>
+                <app-youtubeurl></app-youtubeurl>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,137 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card card-header">
+            <div class="row mb-md-2">
+                <div class="col-sm-12 col-md-6">
+                    <h5 class="card-title text-primary">Price Details</h5>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                        <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal(content)">Add Price</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                        <thead>
+                            <tr>
+                                <!-- <th>Sr No.</th> -->
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>Carpet Area</th>
+                                <th>Updated on Date & Time</th>
+                                <th>updatedby</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let prices of pricedetails">
+                                <!-- <td>{{prices.ID}}</td> -->
+                                <td>{{prices.Type}}</td>
+                                <td>{{prices.Price}}</td>
+                                <td>{{prices.CarpetArea}}</td>
+                                <td>{{prices.updationDate}}</td>
+                                <td>{{prices.updatedby}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal1(ID,prices)">Edit</button>&nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" (click)="deletePriceRow(prices)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <ng-template #content role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Add Price Details</h5>
+                <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+                    <input type="text" name="updatedby" class="form-control" id="updatedby" [(ngModel)]="price.updatedby" hidden>
+                    <div class="row mb-4">
+                        <div class="col-sm-9">
+                            <input type="text" name="PropertyID" class="form-control" id="PropertyID" [(ngModel)]="price.PropertyID" hidden>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Type</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Type" class="form-control" id="Type" [(ngModel)]="price.Type" required>
+                            <span class="text-danger" [hidden]="!error.Type">{{error.Type}}</span>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Carpet Area</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="CarpetArea" class="form-control" id="CarpetArea" [(ngModel)]="price.CarpetArea" required>
+                            <span class="text-danger" [hidden]="!error.CarpetArea">{{error.Type}}</span>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Price" class="form-control" id="Price" [(ngModel)]="price.Price" required>
+                            <span class="text-danger" [hidden]="!error.Price">{{error.Type}}</span>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+
+        <ng-template #ID role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Edit Price Details</h5>
+                <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm (ngSubmit)="Update()">
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Property ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="PropertyID" class="form-control" id="PropertyID" [(ngModel)]="editpricedetails.PropertyID" disabled>
+                            <!-- <select type="text" name="PropertyID" class="form-control" id="PropertyID" [(ngModel)]="price.PropertyID" required>
+                                  <option value="{{this.PropertyID}}" selected>{{this.PropertyID}}</option> 
+                                </select> -->
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Type</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Type" class="form-control" id="Type" [(ngModel)]="editpricedetails.Type" required>
+                            <span class="text-danger" [hidden]="!error.Type">{{error.Type}}</span>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Carpet Area</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="CarpetArea" class="form-control" id="CarpetArea" [(ngModel)]="editpricedetails.CarpetArea" required>
+                            <span class="text-danger" [hidden]="!error.CarpetArea">{{error.CarpetArea}}</span>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Price" class="form-control" id="Price" [(ngModel)]="editpricedetails.Price" required>
+                            <span class="text-danger" [hidden]="!error.Price">{{error.Price}}</span>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+    </div>
+</div>

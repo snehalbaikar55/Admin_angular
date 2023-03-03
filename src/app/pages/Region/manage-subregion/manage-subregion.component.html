@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <!-- <app-page-title title="Regions List"></app-page-title> -->
+    <div class="row">
+        <div class="col-md-4">
+          <div>
+            <h1 title="Regions List"></h1>
+
+          </div>
+        </div>
+        <div class="col-md-8"  style="text-align: right;">
+                <button type="button" class="btn btn-primary mb-3"  routerLink="/sub_region"><i class="mdi mdi-plus me-1"></i>
+                Add Sub-Region</button>
+        </div>
+        <!-- Search -->
+        <!-- <div class="col-md-12">
+            <div id="tickets-table_filter" class="dataTables_length"><label
+                class="d-inline-flex align-items-center">Search:
+                <input type="text" name="searchteamdetailslist" class="form-control form-control-sm ms-2"
+                  aria-controls="tickets-table" [(ngModel)]="searchteamdetailslist"></label>
+              </div>
+        </div> -->
+      <!-- End search -->
+      <div class="col-md-8">
+
+        <div class="row">
+          <div class="col-md-6">
+            <label
+              class="d-inline-flex align-items-center">Region Search:
+              <input type="text" name="searchregions" class="form-control form-control-sm ms-2"
+                aria-controls="tickets-table" [(ngModel)]="searchregions">
+            </label>
+          </div>
+          <div class="col-md-6">
+            <label
+              class="d-inline-flex align-items-center">Sub Region Search:
+              <input type="text" name="searchsubregions" class="form-control form-control-sm ms-2"
+                aria-controls="tickets-table" [(ngModel)]="searchsubregions">
+            </label>
+          </div>
+        </div>
+
+          <div id="tickets-table_filter" class="dataTables_length">
+            <!-- <label
+              class="d-inline-flex align-items-center">Region Search:
+              <input type="text" name="searchregions" class="form-control form-control-sm ms-2"
+                aria-controls="tickets-table" [(ngModel)]="searchregions">
+            </label> -->
+
+            <!-- <label
+              class="d-inline-flex align-items-center">Sub Region Search:
+              <input type="text" name="searchsubregions" class="form-control form-control-sm ms-2"
+                aria-controls="tickets-table" [(ngModel)]="searchsubregions">
+            </label> -->
+          </div>
+
+          <!-- <ng-container *ngIf="(subregionsArr| subRegions:searchbyReg) as result">
+            <div class="col-md-12 mb-5" *ngFor="let data of subregionsArr| subRegions:searchbyReg">
+              <div class="hf-search-content">
+                <h5 class="">{{data.subregion_name}}</h5>
+              </div>
+            </div>
+            <div *ngIf="result.length === 0" class="alert alert-primary" role="alert">
+              <h4>No Match Found</h4>
+          </div>
+          </ng-container> -->
+    </div>
+      <div class="col-md-4">
+        <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [maxSize]="4" [collectionSize]="subregionList.length" [boundaryLinks]="true"  style="justify-content: right!important;"></ngb-pagination>
+    </div>
+      </div>
+
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-body">
+                  <!-- <h4 class="card-title">Registered Users</h4> -->
+    
+                  <div class="table-responsive">
+                      <table class="table mb-0">
+                          <thead>
+                              <!-- Sorting-->
+                             <tr>
+                                <!--<th [class.active]="order === 'region_name'" (click)="setOrder('region_name')">
+                                    Region ID <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                                </th>
+                                <th [class.active]="order === 'subregion_name'" (click)="setOrder('subregion_name')">
+                                    Sub-Region Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                                </th>-->
+                                <th>Region Name</th>
+                                <th>Sub-Region Name</th>
+                                <th>Actions</th>
+                            </tr>
+                            <!-- Sorting End-->
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let subregion of subregionsArr | searchregions:searchregions:searchsubregions | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                <!-- <th scope="row">{{subregion.subregion_id}}</th> -->
+                                <td>{{subregion.region_name}}</td>
+                                <td>{{subregion.subregion_name}}</td>
+                                <td>
+                                  <button type="button" class="btn btn-primary waves-effect waves-light"  routerLink="/editsubregion/{{subregion.subregion_id}}">Edit</button>
+                                  &nbsp;
+                                  <button type="button" class="btn btn-danger waves-effect waves-light"  (click)="deleteSubregionsData(subregion.subregion_id)">Delete</button> 
+                                  <!-- <button type="button" class="btn btn-primary waves-effect waves-light"
+                                    routerLink="/editregion/{{region.region_id}}">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger waves-effect waves-light" (click)="deleteRegionsData(region.region_id)">Delete</button> -->
+                                </td>
+                            </tr>
+                             
+  
+                          </tbody>
+                      </table>
+                  </div>
+  
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- end row -->
+  </div>
+  

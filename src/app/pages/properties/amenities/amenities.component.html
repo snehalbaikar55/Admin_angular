@@ -1,0 +1,149 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row mb-md-2">
+                    <h4 class="card-title text-primary">Add Amenities & Commericial Ammenities</h4>
+                    <div class="col-sm-12 col-md-6 pt-1">
+                        <button type="button" class="btn btn-primary waves-effect waves-light"
+                            data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal(content)">Add
+                            Amenities</button>
+                    </div>
+                    <div class="col-sm-12 col-md-2">
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <!-- <h5 class="card-title text-warning">Commericial Ammenities</h5> -->
+                        <app-commericial-ammenities></app-commericial-ammenities>
+                    </div>
+                </div>
+               
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                        <thead>
+                            <tr>
+                                <th>Amenities</th>
+                                <th>Status</th>
+                                <th>Activate/Deactivate</th>
+                                <th>Updated By</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let amenities of amenitiesdetails">
+                                <td>{{amenities.Title}}</td>
+                                <td>{{amenities.status}}</td>
+                                <td>
+                                    <span class="form-check form-switch mb-3" dir="ltr">
+                                        <input type="checkbox" *ngIf="amenities.status == 1" class="form-check-input"
+                                            (click)="activateAmenities(amenities)" id="customSwitchsizesm" checked>
+                                        <input type="checkbox" *ngIf="amenities.status == 0" class="form-check-input"
+                                            (click)="activateAmenities(amenities)" id="customSwitchsizesm">
+                                    </span>
+                                </td>
+                                <td>{{amenities.updatedby}}</td>
+                                <td> <button type="button" (click)="DeleteAmenities(amenities)"
+                                        class="btn btn-danger btn-sm waves-effect waves-light">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div> 
+
+        <ng-template #content role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Add Amenities</h5>
+                <button type="button" class="btn-close" aria-hidden="true"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-3 col-form-label">Swimming Pool</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_Swimming_Pool()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                        <label for="inputName3" class="col-sm-3 col-form-label">Gymnasium</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_gymnasium()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-3 col-form-label">Library</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_Library()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                        <label for="inputName3" class="col-sm-3 col-form-label">Indoor Games</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_IndoorGames()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-3 col-form-label">Multi Purpose Hall</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_MultiPurposeHall()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                        <label for="inputName3" class="col-sm-3 col-form-label">Children Play Area</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_ChildrenPlayArea()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-3 col-form-label">Green Lawn</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_GreenLawn()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                        <label for="inputName3" class="col-sm-3 col-form-label">Senior Citizen Area</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_SeniorCitizenArea()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-3 col-form-label">Squash Court</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_SquashCourt()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                        <label for="inputName3" class="col-sm-3 col-form-label">Meditation</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_Meditation()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-3 col-form-label">Digital Fitness Workout Zone</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_DigitalFitnessWorkoutZone()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                        <label for="inputName3" class="col-sm-3 col-form-label">Virtual Gaming Room</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_VirtualGamingRoom()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-3 col-form-label">Box Office</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_BoxOffice()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                        <label for="inputName3" class="col-sm-3 col-form-label">Multi Purpose Court</label>
+                        <div class="col-sm-3">
+                            <button type="button" (click)="add_MultiPurposeCourt()"
+                                class="btn btn-primary waves-effect waves-light">ADD</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </ng-template>

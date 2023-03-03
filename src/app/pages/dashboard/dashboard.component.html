@@ -1,0 +1,184 @@
+<!-- start page title -->
+<app-pagetitle title="Dashboard" [breadcrumbItems]="breadCrumbItems"></app-pagetitle>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block ">Total Developers</span>
+                        <h4 class="mb-3">
+                            <span  class="counter-value" >{{TotalDevCount}}</span>
+                        </h4>
+                    </div>
+
+                    <div class="col-6">
+                        <apx-chart class="apex-charts" dir="ltr" [series]="walletlineChart.series"
+                            [chart]="walletlineChart.chart" [colors]="walletlineChart.colors"
+                            [stroke]="walletlineChart.stroke" [tooltip]="walletlineChart.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="text-nowrap">
+                    <span class="badge bg-soft-success text-success">+2</span>
+                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block">Total Properties</span>
+                        <h4 class="mb-3">
+                            <span >{{TotalProperties}}</span>
+                        </h4>
+                    </div>
+                    <div class="col-6">
+                        <apx-chart class="apex-charts" dir="ltr" [series]="tradeslineChart.series"
+                            [chart]="tradeslineChart.chart" [colors]="tradeslineChart.colors"
+                            [stroke]="tradeslineChart.stroke" [tooltip]="tradeslineChart.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="text-nowrap">
+                    <span class="badge bg-soft-danger text-danger">-29</span>
+                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col-->
+
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block ">Total Leads Today</span>
+                        <h4 class="mb-3">
+                            <span >{{TodayLeadCount}}</span>
+                        </h4>
+                    </div>
+                    <div class="col-6">
+                        <apx-chart class="apex-charts" dir="ltr" [series]="investedlineChart.series"
+                            [chart]="investedlineChart.chart" [colors]="investedlineChart.colors"
+                            [stroke]="investedlineChart.stroke" [tooltip]="investedlineChart.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="text-nowrap">
+                    <span class="badge bg-soft-success text-success">+ 500</span>
+                    <span class="ms-1 text-muted font-size-13">Since last yesterday</span>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block">All Leads</span>
+                        <h4 class="mb-3">
+                            <span  class="counter-value">{{TotalLeadCount}}</span>
+                        </h4>
+                    </div>
+                    <div class="col-6">
+                        <apx-chart class="apex-charts" dir="ltr" [series]="profitlineChart.series"
+                            [chart]="profitlineChart.chart" [colors]="profitlineChart.colors"
+                            [stroke]="profitlineChart.stroke" [tooltip]="profitlineChart.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="text-nowrap">
+                    <span class="badge bg-soft-success text-success">+ 250</span>
+                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block">Domain</span>
+                        <h4 class="mb-3">
+                            <span>{{this.staticDomain}}</span>
+                        </h4>
+                    </div>
+
+                    <div class="col-6">
+                        <apx-chart class="apex-charts" dir="ltr" [series]="walletlineChart.series"
+                            [chart]="walletlineChart.chart" [colors]="walletlineChart.colors"
+                            [stroke]="walletlineChart.stroke" [tooltip]="walletlineChart.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="text-nowrap">
+                    <span class="badge bg-soft-success text-success">+2</span>
+                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block">Sub Domain</span>
+                        <h4 class="mb-3">
+                            <span>{{this.local}}</span>
+                        </h4>
+                    </div>
+                    <div class="col-6">
+                        <apx-chart class="apex-charts" dir="ltr" [series]="tradeslineChart.series"
+                            [chart]="tradeslineChart.chart" [colors]="tradeslineChart.colors"
+                            [stroke]="tradeslineChart.stroke" [tooltip]="tradeslineChart.tooltip">
+                        </apx-chart>
+                    </div>
+                </div>
+                <div class="text-nowrap">
+                    <span class="badge bg-soft-danger text-danger">-29</span>
+                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col-->
+
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Project Active And Deactive Chart</h4>
+            </div>
+            <div class="card-body">
+                <apx-chart class="apex-charts" dir="ltr" [series]="ChartType.series" [chart]="ChartType.chart"
+                    [labels]="ChartType.labels" [legend]="ChartType.legend" [colors]="ChartType.colors"
+                    [responsive]="ChartType.responsive">
+                </apx-chart>
+            </div>
+        </div>
+    </div>
+</div><!-- end row-->
+

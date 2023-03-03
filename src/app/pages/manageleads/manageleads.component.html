@@ -1,0 +1,68 @@
+<div class="row">
+    <div *ngIf="loader" class="mt-5 text-center">
+        <img role="status" aria-hidden="true" src="assets/images/admin/admin_loader.gif">
+     </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Leads</h4>
+                <p class="card-title-desc">View leads here.
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="row mb-md-2">
+                    <div class="col-sm-12 col-md-6">
+                        <!-- <div class="dataTables_length" id="tickets-table_length"><label
+                                class="d-inline-flex align-items-center">Show
+                                <select name="tickets-table_length" aria-controls="tickets-table" name="pageSize"
+                                    class="form-control form-control-sm mx-2">
+                                    <option>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                    <option>100</option>
+                                </select> entries</label>
+                        </div> -->
+                    </div>
+                    <!-- Search -->
+                    <div class="col-sm-12 col-md-6">
+                        <div id="tickets-table_filter" class="dataTables_filter text-md-end"><label
+                                class="d-inline-flex align-items-center">Search:
+                                <input type="text" name="searchTerm" [(ngModel)]="searchTerm"
+                                    class="form-control form-control-sm ms-2"></label></div>
+                    </div>
+                    <!-- End search -->
+                </div>
+
+                <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                    <thead>
+                        <tr>
+
+                            <th (click)="sort('i+1')">S.No.</th>
+                            <th (click)="sort('PropertyID')">Property ID</th>
+                            <th (click)="sort('PropertyName')">Property Name</th>
+                            <th (click)="sort('Name')">Name</th>
+                            <th (click)="sort('Email')">Email</th>
+                            <th (click)="sort('Mobile')">Mobile</th>
+                            <th (click)="sort('Time')">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let i=index; let leadData of LeadArr | filter:searchTerm | paginate: { itemsPerPage: 10,currentPage: p } | orderBy: key: reverse">
+                            <td>{{ i+1}}</td>
+                            <td>{{ leadData.PropertyID}}</td>
+                            <td>{{ leadData.PropertyName}}</td>
+                            <td>{{ leadData.Name}}</td>
+                            <td>{{ leadData.Email}}</td>
+                            <td>{{ leadData.Mobile}}</td>
+                            <td>{{ leadData.Time}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls class="d-flex justify-content-center" (pageChange)="p = $event">
+                </pagination-controls>
+
+            </div>
+        </div>
+    </div>
+</div>

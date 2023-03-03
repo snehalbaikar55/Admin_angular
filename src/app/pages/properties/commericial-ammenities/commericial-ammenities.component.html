@@ -1,0 +1,78 @@
+<!-- <h5 class="card-title text-warning">Commericial Ammenities</h5> -->
+    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal"
+        (click)="openModal(content)">Add Commericial Ammenities</button> 
+<ng-template #content role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">Add Commericial Ammenities</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form #signupForm=ngForm>
+            <div class="row mb-4">
+                <label for="inputName3" class="col-sm-3 col-form-label">Glass Facade</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_GlassFacade()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+                <label for="inputName3" class="col-sm-3 col-form-label">Spacious Entrance Lobby</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_SpaciousEntranceLobby()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label for="inputName3" class="col-sm-3 col-form-label">Well Planned Offices</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_WellPlannedOffices()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+                <label for="inputName3" class="col-sm-3 col-form-label">High Speed Elevators</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_HighSpeedElevators()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label for="inputName3" class="col-sm-3 col-form-label">Ample Parking Space</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_AmpleParkingSpace()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+                <label for="inputName3" class="col-sm-3 col-form-label">Robust Security</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_RobustSecurity()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label for="inputName3" class="col-sm-3 col-form-label">Dedicated Pantries</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_DedicatedPantries()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+                <label for="inputName3" class="col-sm-3 col-form-label">Dedicated Washrooms</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_DedicatedWashrooms()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label for="inputName3" class="col-sm-3 col-form-label">Waiting Lounge</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_WaitingLounge()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+                <label for="inputName3" class="col-sm-3 col-form-label">DG Backup for Common Areas</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_DGBackupforCommonAreas()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+                <label for="inputName3" class="col-sm-3 col-form-label">Air Conditioning Office Spaces</label>
+                <div class="col-sm-3">
+                    <button type="button" (click)="add_AirConditioningOfficeSpaces()"
+                        class="btn btn-primary waves-effect waves-light">ADD</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>

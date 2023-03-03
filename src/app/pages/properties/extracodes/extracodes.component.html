@@ -1,0 +1,273 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row mb-md-2">
+                    <div class="col-sm-12 col-md-6">
+                        <h5 class="card-title text-primary">Extra Codes</h5>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                            <button type="button" class="btn btn-primary waves-effect waves-light"
+                                data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal(content)">Add Extra
+                                Codes</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables"
+                        *ngFor="let extracode of codes">
+                        <thead>
+                            <tr>
+                                <th>Codes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Code 1 (Clickcease)</td>
+                                <td>
+                                    <button type="button" (click)="opencode1(editcode1modal,extracode)"
+                                        class="btn btn-primary btn-sm waves-effect waves-light">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"
+                                        (click)="deletecode1(extracode)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Code 2 (Google)</td>
+                                <td>
+                                    <button type="button" (click)="opencode2(editcode2modal,extracode)"
+                                        class="btn btn-primary btn-sm waves-effect waves-light">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"
+                                        (click)="deletecode2(extracode)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Code 3 (Facebook)</td>
+                                <td>
+                                    <button type="button" (click)="opencode3(editcode3modal,extracode)"
+                                        class="btn btn-primary btn-sm waves-effect waves-light">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"
+                                        (click)="deletecode3(extracode)">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Code 4 (Event Snippet)</td>
+                                <td>
+                                    <button type="button" (click)="opencode4(editcode4modal,extracode)"
+                                        class="btn btn-primary btn-sm waves-effect waves-light">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"
+                                        (click)="deletecode4(extracode)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <ng-template #content role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Add Extra Codes</h5>
+                <button type="button" class="btn-close" aria-hidden="true"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm (ngSubmit)="addExtraCode()">
+
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Code 2 (Google)</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="updatedby" [(ngModel)]="extracode.updatedby" id="updatedby"
+                                class="form-control">
+                            <!-- <span class="text-danger" [hidden]="!error.code2">{{error.code2}}</span> -->
+
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <input type="text" name="PropertyID" [(ngModel)]="extracode.PropertyID" id="PropertyID"
+                            class="form-control" hidden>
+                        <label for="inputName3" class="col-sm-2 col-form-label">Code 1 (Clickcease)</label>
+                        <div class="col-sm-9">
+
+                            <input type="text" name="code1" [(ngModel)]="extracode.code1" id="code1"
+                                class="form-control">
+                            <span class="text-danger" [hidden]="!error.code1">{{error.code1}}</span>
+
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Code 2 (Google)</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="code2" [(ngModel)]="extracode.code2" id="code2"
+                                class="form-control">
+                            <span class="text-danger" [hidden]="!error.code2">{{error.code2}}</span>
+
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Code 3 (Facebook)</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="code3" [(ngModel)]="extracode.code3" id="code3"
+                                class="form-control"
+                                placeholder="Default code is already been set.Dont add code without permission">
+                            <!-- <span class="text-danger" [hidden]="!error.code3">{{error.code3}}</span> -->
+
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Code 4 (Event snippet)</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="code4" [(ngModel)]="extracode.code4" id="code4"
+                                class="form-control">
+                            <!-- <span class="text-danger" [hidden]="!error.code4">{{error.code4}}</span> -->
+                            <input type="text" name="Msg" [(ngModel)]="extracode.Msg" class="form-control" hidden>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </ng-template>
+
+        <div>
+            <ng-template #editcode1modal role="document" let-modal>
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="modal-basic-title">Edit Code1</h5>
+                    <button type="button" class="btn-close" aria-hidden="true"
+                        (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                    <form #signupForm=ngForm (ngSubmit)="updateCode1()">
+                        <div class="row mb-4">
+                            <input type="text" name="PropertyID" [(ngModel)]="extracode.PropertyID" id="PropertyID"
+                                class="form-control" hidden>
+                            <label for="inputName3" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="ID" [(ngModel)]="code1data.ID" id="ID" class="form-control"
+                                    hidden>
+                                <input type="text" name="code1" [(ngModel)]="code1data.code1" id="code1"
+                                    class="form-control" required>
+
+                                <!-- <span class="text-danger" [hidden]="!error.Rera">{{error.Rera}}</span> -->
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-sm-9">
+                                <div>
+                                    <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </ng-template>
+
+            <ng-template #editcode2modal role="document" let-modal>
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="modal-basic-title">Edit Code2</h5>
+                    <button type="button" class="btn-close" aria-hidden="true"
+                        (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                    <form #signupForm=ngForm (ngSubmit)="updateCode2()">
+                        <div class="row mb-4">
+                            <input type="text" name="PropertyID" [(ngModel)]="extracode.PropertyID" id="PropertyID"
+                                class="form-control" hidden>
+                            <label for="inputName3" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="ID" [(ngModel)]="code2data.ID" id="ID" class="form-control"
+                                    hidden>
+                                <input type="text" name="code2" [(ngModel)]="code2data.code2" id="code2"
+                                    class="form-control" required>
+                                <!-- <span class="text-danger" [hidden]="!error.Rera">{{error.Rera}}</span> -->
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-sm-9">
+                                <div>
+                                    <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </ng-template>
+
+            <ng-template #editcode3modal role="document" let-modal>
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="modal-basic-title">Edit Code3</h5>
+                    <button type="button" class="btn-close" aria-hidden="true"
+                        (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                    <form #signupForm=ngForm (ngSubmit)="updateCode3()">
+                        <div class="row mb-4">
+                            <input type="text" name="PropertyID" [(ngModel)]="extracode.PropertyID" id="PropertyID"
+                                class="form-control" hidden>
+                            <label for="inputName3" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="ID" [(ngModel)]="code3data.ID" id="ID" class="form-control"
+                                    hidden>
+                                <input type="text" name="code3" [(ngModel)]="code3data.code3" id="code3"
+                                    class="form-control" required>
+                                <!-- <span class="text-danger" [hidden]="!error.Rera">{{error.Rera}}</span> -->
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-sm-9">
+                                <div>
+                                    <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </ng-template>
+
+            <ng-template #editcode4modal role="document" let-modal>
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="modal-basic-title">Edit Code4</h5>
+                    <button type="button" class="btn-close" aria-hidden="true"
+                        (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                    <form #signupForm=ngForm (ngSubmit)="updateCode4()">
+                        <div class="row mb-4">
+                            <input type="text" name="PropertyID" [(ngModel)]="extracode.PropertyID" id="PropertyID"
+                                class="form-control" hidden>
+                            <label for="inputName3" class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="ID" [(ngModel)]="code4data.ID" id="ID" class="form-control"
+                                    hidden>
+                                <input type="text" name="code4" [(ngModel)]="code4data.code4" id="code4"
+                                    class="form-control" required>
+                                <!-- <span class="text-danger" [hidden]="!error.Rera">{{error.Rera}}</span> -->
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-sm-9">
+                                <div>
+                                    <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </ng-template>

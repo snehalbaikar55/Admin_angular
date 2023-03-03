@@ -1,0 +1,67 @@
+<!-- start page title -->
+<app-pagetitle title="DataTables"></app-pagetitle>
+<!-- end page title -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Users Details</h4>
+                <p class="card-title-desc">Manage users here.
+                </p>
+            </div>
+            <div class="card-body">
+                <div class="row mb-md-2">
+                    <div class="col-sm-12 col-md-6">
+                        <!-- <div class="dataTables_length" id="tickets-table_length"><label
+                                class="d-inline-flex align-items-center">Show
+                                <select name="tickets-table_length" aria-controls="tickets-table" name="pageSize"
+                                    class="form-control form-control-sm mx-2">
+                                    <option>10</option>
+                                    <option>25</option>
+                                    <option>50</option>
+                                    <option>100</option>
+                                </select> entries</label>
+                        </div> -->
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div id="tickets-table_filter" class="dataTables_filter text-md-end"><label
+                                class="d-inline-flex align-items-center">Search:
+                                <input type="text" name="searchTerm" [(ngModel)]="searchTerm"
+                                    class="form-control form-control-sm ms-2"></label>
+                        </div>
+                    </div>
+                </div>
+                <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                    <thead>
+                        <tr>
+                            <th (click)="sort('PropertyID')">Property ID</th>
+                            <th (click)="sort('PropertyName')">Property Name</th>
+                            <th (click)="sort('updated_at')">UpdationDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let property of propertiesArr | filter:searchTerm | paginate: { itemsPerPage: 10,currentPage: p } | orderBy: key: reverse">
+
+                            <td scope="row">{{property.PropertyID}}</td>
+                            <td>{{property.PropertyName}}</td>
+                            <td>{{property.updated_at}}
+                            </td>
+
+                            <td>
+                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                    routerLink="/addData/{{property.PropertyID}}">Edit</button>
+                                &nbsp;
+                                <button type="button" class="btn btn-danger waves-effect waves-light"
+                                    (click)="deleteproperty(property.PropertyID)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls class="d-flex justify-content-center" (pageChange)="p = $event">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

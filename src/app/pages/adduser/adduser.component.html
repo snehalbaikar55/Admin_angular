@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">User Registration Form</h4>
+                <p class="card-title-desc">Add new user here
+                </p>
+            </div>
+            <div class="card-body p-4">
+
+                <div class="row">
+                    <div class="mt-4 mt-lg-0">
+                        <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+                            <input type="hidden" name="active" value="1">
+                            <div class="row mb-4">
+                                <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="Name" class="form-control" id="inputName3"
+                                        [(ngModel)]="form.Name" required>    
+                                </div>
+                                
+                            </div>
+
+                            <div class="row mb-4">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" name="email" class="form-control" id="inputEmail3"
+                                        [(ngModel)]="form.email" required>
+                                    <span class="text-danger" [hidden]="!error.email">{{error.email}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="password" class="form-control" id="inputPassword3"
+                                        [(ngModel)]="form.password" required>
+                                    <span class="text-danger" [hidden]="!error.password">{{error.password}}</span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label for="inputPassword4" class="col-sm-2 col-form-label">Confirm Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" name="password_confirmation" class="form-control"
+                                        id="inputPassword4" [(ngModel)]="form.password_confirmation" required>
+
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label for="inputMobile3" class="col-sm-2 col-form-label">Mobile No</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="mobile_no" class="form-control" (blur)="checkMobile($event)" id="inputMobile3"
+                                        [(ngModel)]="form.mobile_no" required>
+                                    <span class="text-danger" [hidden]="!error.mobile_no">{{error.mobile_no}}</span>
+                                </div>
+                            </div>
+
+                            <!-- <div class="row mb-4">
+                                    <label for="inputRole3" class="col-sm-2 col-form-label">Role</label>
+                                <div class="col-sm-9">
+                                <input type="text" name="role" class="form-control" id="inputRole3" [(ngModel)]="form.role" required>
+                                </div>
+                                </div> -->
+                            <div class="row mb-4">
+                                <label for="inputRole3" class="col-sm-2 col-form-label">Select Role</label>
+                                <div class="col-sm-9">
+                                    <select type="text" name="role" class="form-control" id="role"[(ngModel)]="form.role" required>
+                                        <option value="IT">IT</option>
+                                        <option value="Team Leader">Team Leader</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="col-sm-9">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary w-md"
+                                            [disabled]="!signupForm.valid">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Form Layout -->

@@ -1,0 +1,37 @@
+<button *ngFor="let color of ColourDetails" type="button" class="btn btn-primary waves-effect waves-light"
+    data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal1(edit,color)">Update Colour</button>
+<ng-template #edit role="document" let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title mt-0">Update Colour</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form (ngSubmit)="Update()">
+                    <input type="text" name="PropertyID" class="form-control" id="PropertyID"
+                        [(ngModel)]="editcolourdetails.PropertyID" hidden>
+
+            <div class="row mb-4">
+                <label for="inputName3" class="col-sm-2 col-form-label"> Colour 1 </label>
+                <div class="col-sm-9">
+                    <input type="text" name="Colour1" class="form-control" id="Colour1"
+                        [(ngModel)]="editcolourdetails.Colour1">
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label for="inputName3" class="col-sm-2 col-form-label">Colour 2</label>
+                <div class="col-sm-9">
+                    <input type="text" name="Colour2" class="form-control" id="Colour2"
+                        [(ngModel)]="editcolourdetails.Colour2">
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-9">
+                    <div>
+                        <button type="submit" class="btn btn-primary w-md">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</ng-template>

@@ -1,0 +1,184 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card card-header">
+            <div class="row mb-md-2">
+                <div class="col-sm-12 col-md-6">
+                    <h5 class="card-title text-primary">Form Information Details</h5>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                        <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+                            data-bs-target="#myModal" (click)="openModal(content)">Form Information</button>
+                    </div>
+                </div> <!-- end col -->
+
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive ">
+                        <thead *ngFor="let FormInfo of formInfodetails">
+
+                            <tr>
+                                <th>Form Name</th>
+                                <td>{{FormInfo.formname}}</td>
+                            </tr>
+                            <tr>
+                                <th>Form ID1</th>
+                                <td>{{FormInfo.id1}}</td>
+                            </tr>
+                            <tr>
+                                <th>Form ID2</th>
+                                <td>{{FormInfo.id2}}</td>
+                            </tr>
+                            <tr>
+                                <th>Domain</th>
+                                <td>{{FormInfo.domain}}</td>
+                            </tr>
+                            <tr>
+                                <th>Updated By</th>
+                                <td>{{FormInfo.updatedby}}</td>
+                            </tr>
+                            <tr>
+                                <th>Updated on Date & Time</th>
+                                <td>{{FormInfo.updationDate}}</td>
+                            </tr>
+                            <tr>
+                                <th>Actions</th>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light"
+                                        data-bs-toggle="modal" data-bs-target="#myModal"
+                                        (click)="openModal1(edit,FormInfo)">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"
+                                        (click)="deleteFormData(FormInfo)">Delete</button>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <ng-template #content role="document" let-modal>
+                        <div class="modal-header">
+                            <h5 class="modal-title mt-0">Add new property here</h5>
+                            <button type="button" class="btn-close" aria-hidden="true"
+                                (click)="modal.dismiss('Cross click')"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+                                        <input type="text" name="updatedby" [(ngModel)]="form.updatedby" id="updatedby"
+                                            class="form-control" hidden>
+                                        <input type="text" name="PropertyID" class="form-control" id="PropertyID"
+                                            [(ngModel)]="form.PropertyID" hidden>
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label"> Form Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="formname" class="form-control" id="formname"
+                                            [(ngModel)]="form.formname">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">Form Id 1
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="id1" class="form-control" id="id1"
+                                            [(ngModel)]="form.id1">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">Form Id 2
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="id2" class="form-control" id="id2"
+                                            [(ngModel)]="form.id2">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">Domain</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="domain" class="form-control" id="domain"
+                                            [(ngModel)]="form.domain" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">crmurl</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="crmurl" class="form-control" id="crmurl"
+                                            value="https://www.smashsst.com/mcrm/modules/Webforms/capture.php"
+                                            [(ngModel)]="form.crmurl" required>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                    <div class="col-sm-9">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </ng-template>
+                    <ng-template #edit role="document" let-modal>
+                        <div class="modal-header">
+                            <h5 class="modal-title mt-0">Edit Form Information</h5>
+                            <button type="button" class="btn-close" aria-hidden="true"
+                                (click)="modal.dismiss('Cross click')"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form #signupForm=ngForm (ngSubmit)="Update()">
+                                <input type="text" name="PropertyID" class="form-control" id="PropertyID"
+                                [(ngModel)]="form.PropertyID" hidden>
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label"> Form Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="formname" class="form-control" id="formname"
+                                            [(ngModel)]="editformdetails.formname">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">Form Id 1
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="id1" class="form-control" id="id1"
+                                            [(ngModel)]="editformdetails.id1">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">Form Id 2
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="id2" class="form-control" id="id2"
+                                            [(ngModel)]="editformdetails.id2">
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">Domain</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="domain" class="form-control" id="domain"
+                                            [(ngModel)]="editformdetails.domain" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <label for="inputName3" class="col-sm-2 col-form-label">crmurl</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="crmurl" class="form-control" id="crmurl"
+                                            value="https://www.smashsst.com/mcrm/modules/Webforms/capture.php"
+                                            [(ngModel)]="editformdetails.crmurl" required>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                    <div class="col-sm-9">
+                                        <div>
+                                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

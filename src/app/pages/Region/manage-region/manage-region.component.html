@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <!-- <app-page-title title="Regions List"></app-page-title> -->
+    <div class="row">
+        <div class="col-md-4">
+          <div>
+            <h1 title="Regions List"></h1>
+
+          </div>
+        </div>
+        <div class="col-md-8"  style="text-align: right;">
+                <button type="button" class="btn btn-primary mb-3"  routerLink="/region"><i class="mdi mdi-plus me-1"></i>
+                Add Region</button>
+        </div>
+        <!-- Search -->
+        <!-- <div class="col-md-12">
+            <div id="tickets-table_filter" class="dataTables_length"><label
+                class="d-inline-flex align-items-center">Search:
+                <input type="text" name="searchteamdetailslist" class="form-control form-control-sm ms-2"
+                  aria-controls="tickets-table" [(ngModel)]="searchteamdetailslist"></label>
+              </div>
+        </div> -->
+      <!-- End search -->
+      <div class="col-md-8">
+        <div id="tickets-table_filter" class="dataTables_length"><label
+            class="d-inline-flex align-items-center">Region Search:
+            <input type="text" name="searchregions" class="form-control form-control-sm ms-2"
+              aria-controls="tickets-table" [(ngModel)]="searchregions"></label>
+          </div>
+    </div>
+      <div class="col-md-4">
+        <ngb-pagination class="d-flex justify-content-center" [(page)]="page" [maxSize]="4" [collectionSize]="regionsList.length" [boundaryLinks]="true"  style="justify-content: right!important;"></ngb-pagination>
+    </div>
+      </div>
+
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-body">
+                  <!-- <h4 class="card-title">Registered Users</h4> -->
+    
+                  <div class="table-responsive">
+                      <table class="table mb-0">
+                          <thead>
+                              <tr>
+                                  <!-- <th>ID</th> -->
+                                  <!-- <th>Region ID</th> -->
+                                  <th>Region Name</th>
+                                  <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let region of regionsArr | searchregions:searchregions | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                  <!-- <th scope="row">{{region.region_id}}</th> -->
+                                  <!-- <td>{{region.region_id}}</td> -->
+                                  <td>{{region.region_name}}</td>
+                                  <td>
+                                    <!-- <button type="button" class="btn btn-info"  routerLink=""><i class="uil-pen"></i></button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger"  (click)="deleteRegionsData()"><i class="uil-trash-alt"></i></button>  -->
+
+                                    <!-- <button type="button" class="btn btn-primary waves-effect waves-light" routerLink="/region/editregion/">Edit</button> -->
+                                    <button type="button" class="btn btn-primary waves-effect waves-light"
+                                    routerLink="/editregion/{{region.region_id}}">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger waves-effect waves-light" (click)="deleteRegionsData(region.region_id)">Delete</button>
+                                   </td>
+                              </tr>
+                             
+  
+                          </tbody>
+                      </table>
+
+                      <!-- <pagination-controls class="d-flex justify-content-center" (pageChange)="p = $event">
+                      </pagination-controls> -->
+                  </div>
+  
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- end row -->
+  </div>
+  

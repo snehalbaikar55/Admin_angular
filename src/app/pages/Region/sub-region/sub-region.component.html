@@ -1,0 +1,64 @@
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <h1 title="Create Region" ></h1>
+    <!-- end page title -->
+    <form (ngSubmit)="submitsubregion()">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+  
+           
+            <!-- <div class="mb-3 row">
+              <label for="first name" class="col-md-2 col-form-label">Region ID</label>
+              <div class="col-md-10">
+                <input class="form-control" type="text"  id="region_id" placeholder="Enter Region ID" name="region_id" [(ngModel)]="regions.region_id">
+              </div>
+            </div> -->
+  
+            <div class="mb-3 row">
+              <label for="first name" class="col-md-2 col-form-label">Region Name</label>
+              <div class="col-md-10">
+                <!-- <input class="form-control" type="text"  id="region_id" placeholder="Enter Region ID" name="region_id" [(ngModel)]="subregions.region_id"> -->
+                <select  class="form-control"  name="region_id"  [(ngModel)]="subregions.region_id"  required>
+                    <option value="">-- Select Region Name --</option>
+                    <option *ngFor="let rl of regionsArr"  value="{{rl.region_id}}">
+                    {{rl.region_name}}
+                    </option>
+                </select>
+                <span class="text-danger" [hidden]="!error.region_id">{{error.region_id}}</span>
+              </div>
+            </div>
+
+            <!-- <div class="mb-3 row">
+              <label for="Region name" class="col-md-3 col-form-label">Region Name</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text"  id="region_name" placeholder="Enter Region Name" name="region_name" [(ngModel)]="regions.region_name"  required>
+                <span class="text-danger" [hidden]="!error.region_name">{{error.region_name}}</span>
+              </div>
+            </div> -->
+
+            <div class="mb-3 row">
+              <label for="Sub-Region name" class="col-md-3 col-form-label">Sub-Region Name</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text"  id="subregion_name" placeholder="Enter Sub Region Name" name="region_name" [(ngModel)]="subregions.subregion_name"  required>
+                <span class="text-danger" [hidden]="!error.subregion_name">{{error.subregion_name}}</span>
+              </div>
+            </div>
+         
+   
+  
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+  
+  
+          </div>
+        </div>
+      </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+  </form>
+  
+  </div> <!-- container-fluid -->

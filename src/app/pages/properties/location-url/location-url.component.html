@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">                
+                <div class="row mb-md-2">
+                    <div class="col-sm-12 col-md-6">
+                        <h4 class="card-title   text-primary">Location URL</h4>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                            <button type="button" class="btn btn-primary waves-effect waves-light"
+                                data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal(content)">Add Location URL</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="card-body">
+                      
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                        <thead>
+                            <tr>
+     
+                                <th>Location</th>
+                                <th>updatedby</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor = "let url of locationurl">
+                                <td><div style="width: 100%"><iframe
+                                   
+                                    width="100%" 
+                                    height="600"
+                                    style="border:0"
+                                    loading="lazy"
+                                    allowfullscreen
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    [src]= "mapUrl">
+                                </iframe></div></td>
+                                <td>{{url.updatedby}}</td>
+                               <td>
+                                    <button type="button" (click)="openEditModal(edit,url)" class="btn btn-primary waves-effect waves-light">Edit</button>
+                                    &nbsp;
+                                    <button type="button" class="btn btn-danger waves-effect waves-light" (click)="deleteurl(url)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div> <!-- end col -->
+           
+        </div>
+
+        <ng-template #content role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Add LocationURL</h5>
+                <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm (ngSubmit)="addURL()">
+                    <div class="row mb-4">
+                        <input type="text" name="PropertyID" [(ngModel)]="this.PropertyID" id="PropertyID" class="form-control" hidden>
+                        
+                        <label for="inputName3" class="col-sm-2 col-form-label">Location Url</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="URL"  [(ngModel)]="locationUrl.URL" id="URL" class="form-control" placeholder="url">
+                            <span class="text-danger" [hidden]="!error.URL">{{error.URL}}</span>
+                            <span class="text-danger" [hidden]="!error.PropertyID">{{error.PropertyID}}</span>
+                        </div>
+                    </div>
+    
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+        </ng-template>
+
+        <ng-template #edit role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Edit LocationURL</h5>
+                <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm (ngSubmit)="editURL()">
+    
+                    <div class="row mb-4">
+                        <input type="text" name="PropertyID" [(ngModel)]="this.PropertyID" id="PropertyID" class="form-control" hidden>
+                        <label for="inputName3" class="col-sm-2 col-form-label">Location Url</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="URL"  [(ngModel)]="editdata.URL" id="URL" class="form-control" placeholder="url">
+                            <!-- <span class="text-danger" [hidden]="!error.code1">{{error.code1}}</span> -->
+                        </div>
+                    </div>
+    
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                </form>
+            </div>
+        </ng-template>
+
+
+       
+
+
+

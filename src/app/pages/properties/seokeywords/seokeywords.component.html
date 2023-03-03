@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card card-header">
+            <div class="row mb-md-2">
+                <div class="col-sm-12 col-md-6">
+                    <h6 class="card-title text-primary">SEO Keywords Details</h6>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                        <button type="button" class="btn btn-primary  waves-effect waves-light" data-bs-toggle="modal"
+                            data-bs-target="#myModal" (click)="openModal(content)">Add SEO Kyewords</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                        <thead>
+                            <tr>
+                                <!-- <th>Sr No.</th> -->
+                                <th>MetaDescription</th>
+                                <th>Keywords</th>
+                                <th>Updated on Date & Time</th>
+                                <th>updatedby</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let seok of seokdetails">
+                                <!-- <td>{{seok.ID}}</td> -->
+                                <td>{{seok.metadescription}}</td>
+                                <td>{{seok.keywords}}</td>
+                                <td>{{seok.updationDate}}</td>
+                                <td>{{seok.updatedby}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light"
+                                        data-bs-toggle="modal" data-bs-target="#myModal"
+                                        (click)="openModal1(edit,seok)">Edit</button>&nbsp;
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"
+                                        (click)="deleteSEORow(seok)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #content role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Add SEO Keywords Details</h5>
+                <button type="button" class="btn-close" aria-hidden="true"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm (ngSubmit)="onSubmit()">
+
+                            <input type="text" name="PropertyID" class="form-control" id="PropertyID"
+                                [(ngModel)]="seok.PropertyID" hidden>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Message</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Msg" class="form-control" id="Msg" [(ngModel)]="seok.Msg" required>
+                            <!-- <span class="text-danger" [hidden]="!error.Msg">{{error.Msg}}</span> -->
+                        </div>
+                    </div>
+                    <input type="text" name="updatedby" [(ngModel)]="seok.updatedby" id="updatedby" class="form-control" hidden>
+                
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Meta Description</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="metadescription" class="form-control" id="metadescription"
+                                [(ngModel)]="seok.metadescription" required>
+                            <span class="text-danger" [hidden]="!error.metadescription">{{error.metadescription}}</span>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">keywords</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="keywords" class="form-control" id="keywords"
+                                [(ngModel)]="seok.keywords" required>
+                            <span class="text-danger" [hidden]="!error.keywords">{{error.keywords}}</span>
+
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ng-template>
+
+        <ng-template #edit role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Edit SEO Keywords Details</h5>
+                <button type="button" class="btn-close" aria-hidden="true"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form #signupForm=ngForm (ngSubmit)="Update()">
+                    <input type="text" name="PropertyID" class="form-control" id="PropertyID"
+                        [(ngModel)]="editseokdetails.PropertyID" hidden>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Message</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Msg" class="form-control" id="Msg"
+                                [(ngModel)]="editseokdetails.Msg" required>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Type</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="metadescription" class="form-control" id="metadescription"
+                                [(ngModel)]="editseokdetails.metadescription" required>
+                            <span class="text-danger" [hidden]="!error.metadescription">{{error.metadescription}}</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">keywords</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="keywords" class="form-control" id="keywords"
+                                [(ngModel)]="editseokdetails.keywords" required>
+                            <span class="text-danger" [hidden]="!error.keywords">{{error.keywords}}</span>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </ng-template>
+
+    </div>
+</div>

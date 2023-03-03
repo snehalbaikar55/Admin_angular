@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Region Details</h4>
+                <!-- <p class="card-title-desc">Manage region here.
+                </p> -->
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="mt-4 mt-lg-0">
+                        <form #editReginForm=ngForm (ngSubmit)="onSubmit()">
+                            <div class="row mb-4">
+                                <label for="inputName3" class="col-sm-2 col-form-label">Region Name</label>
+                                <div class="col-sm-9">
+                                  <input type="text" name="Name" class="form-control" id="Name" [(ngModel)]="region_name" required>
+                                </div>
+                            </div>
+                            <div class="row justify-content-end">
+                                <div class="col-sm-9">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary w-md"  [disabled]="!editReginForm.valid">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

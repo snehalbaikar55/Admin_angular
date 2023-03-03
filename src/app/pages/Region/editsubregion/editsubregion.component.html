@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Sub-Region Details</h4>
+            </div>
+
+            <div class="card-body">
+                <form (ngSubmit)="updateregions()">
+                    <div class="mb-3 row">
+                        <label for="first name" class="col-md-2 col-form-label">Region Name</label>
+                        <div class="col-md-10">
+                            <!-- <input class="form-control" type="text"  id="region_id" placeholder="Enter Region ID" name="region_id" [(ngModel)]="subregions.region_id"> -->
+                            <select  class="form-control"  name="region_id"  [(ngModel)]="subregions.region_id">
+                                <!-- <option value="">Select Region Name</option> -->
+                                <option *ngFor="let rl of regionsArr"  value="{{rl.region_id}}" selected> {{rl.region_name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label for="last name" class="col-md-2 col-form-label">Subregion Name</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text"  id="subregion_name" placeholder="Enter Subregion Name" name="subregion_name" [(ngModel)]="subregions.subregion_name">
+                        </div>
+                    </div>
+                   
+             
+            
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" routerLink="/manage_sub_region">Cancel</button>
+                        &nbsp;
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

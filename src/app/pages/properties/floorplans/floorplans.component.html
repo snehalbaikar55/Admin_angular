@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row mb-md-2">
+                    <div class="col-sm-12 col-md-6">
+                        <h5 class="card-title text-primary">Site & Floor Plans</h5>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div id="tickets-table_filter" class="dataTables_filter text-md-end">
+                            <button type="button" class="btn btn-primary waves-effect waves-light"
+                                data-bs-toggle="modal" data-bs-target="#myModal" (click)="openModal(content)">Add Floor
+                                Plans</button>
+                        </div>
+                    </div>
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                        <thead>
+                            <tr>
+                                <th>Images</th>
+                                <th>Title</th>
+                                <th>Updated on Date & Time</th>
+                                <th>Updatedby</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let fpdata of fpimages">
+                            <tr>
+                                <td><img src="assets/img/floorplans_admin/{{fpdata.PropertyID}}/{{fpdata.Image}}" width="40%" height="25%"></td>
+                                <td>{{fpdata.Title}}</td>
+                                <td>{{fpdata.updated_at}}</td>
+                                <td>{{fpdata.updatedby}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm waves-effect waves-light"
+                                        (click)="deletefp(fpdata)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+        </div> 
+    </div>
+        <ng-template #content role="document" let-modal>
+            <div class="modal-header">
+                <h5 class="modal-title mt-0">Add Floor Plans</h5>
+                <button type="button" class="btn-close" aria-hidden="true"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="saveMultipleImages()">
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Floor Plans</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="PropertyID" class="form-control" id="PropertyID"
+                                [(ngModel)]="floorplans.PropertyID" hidden>
+                            <input class="form-control" type='file' id="Image" name="Image"
+                                (change)="onSelectFile($event)">
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputName3" class="col-sm-2 col-form-label">Floor Plan Title</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="Title" id="Title"
+                                [(ngModel)]="floorplans.Title">
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-9">
+                            <div>
+                                <button type="submit" class="btn btn-primary w-md">submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ng-template>

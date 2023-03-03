@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Developers Operation</h4>
+                <p class="card-title-desc">Manage Developers Property!</p>
+            </div>
+
+            <div class="card-body">
+                <div class="row mb-md-2">
+                    <div class="col-sm-12 col-md-6">
+                        <!-- <select class="form-control" name="Developer" (change)="onDeveloperChange($event)">
+                            <option class="form-control" *ngFor='let dev of DeveloperData' [value]="dev.Developer">{{dev.Developer}}</option>
+                        </select> -->
+
+                        <ng-select [items]="DeveloperResult" (change)="onDeveloperChange($event)" placeholder="No Developer selected">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <table id="datatable" class="table table-bordered dt-responsive nowrap w-100 datatables">
+                    <thead>
+                        <tr>
+                            <th>Property Name</th>
+                            <th>Property Location</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let devProp of DeveloperProperty">
+                            <td>{{ devProp.ProjectName }}</td>
+                            <td>{{ devProp.Location }}</td>
+                            <!-- <td>{{ devProp.active }} : Active/Deactive</td> -->
+                            <!-- <td>{{ devProp.active != 1 ? "Deactive":"Active" }}</td> -->
+                            <td>
+                                <div id="tickets-table_filter" title="Click to De-activate" class="dataTables_filter text-md-end">
+                                    <button type="button" *ngIf="(devProp.active == 1)"
+                                        class="btn btn-primary waves-effect waves-light"
+                                        (click)="propActivInactive(devProp.PropertyID, devProp.active)">Active</button>
+                                    <button type="button"
+                                        *ngIf="(devProp.active == 0)" title="Click to Activate"
+                                        class="btn btn-danger waves-effect waves-light"
+                                        (click)="propActivInactive(devProp.PropertyID, devProp.active)">Inactive</button>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                routerLink="/addData/{{devProp.PropertyID}}">Edit</button>
+                                &nbsp;
+                                <!-- <button type="button" class="btn btn-danger waves-effect waves-light">Delete</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
